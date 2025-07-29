@@ -20,12 +20,12 @@ on:
           - staging
           - production
       resourceDirectory:
-        description: 'Enter folder name for Testlum resources'
+        description: 'Enter folder NAME for testlum resources for Frontend'
         required: true
         default: 'RESOURCES_EXAMPLE'
         type: string
       globalConfigFile:
-        description: 'Enter Testlum global config file name'
+        description: 'Enter testlum config file NAME for Frontend'
         required: true
         default: 'global-config.xml'
         type: string
@@ -65,7 +65,7 @@ jobs:
 
       - name: Run Tests
         run: |
-          docker run -u ${{ env.USER_ID }}:${{ env.GROUP_ID }} --network ${{ env.tag }} -e TZ=Europe/Kiev --name ui-tests-fr -v ${{ github.workspace }}/schema:/schema -v ${{ github.workspace }}/${{ github.event.inputs.resourceDirectory || env.resourceDirectory }}:/${{ github.event.inputs.resourceDirectory || env.resourceDirectory }} testlum/testlum:1.0.2 -c=${{ github.event.inputs.globalConfigFile || env.globalConfigFile }} -p=/${{ github.event.inputs.resourceDirectory || env.resourceDirectory }}
+          docker run -u ${{ env.USER_ID }}:${{ env.GROUP_ID }} --network ${{ env.tag }} -e TZ=Europe/Kiev --name ui-tests-fr -v ${{ github.workspace }}/schema:/schema -v ${{ github.workspace }}/${{ github.event.inputs.resourceDirectory || env.resourceDirectory }}:/${{ github.event.inputs.resourceDirectory || env.resourceDirectory }} public.ecr.aws/f1r2a3f3/testlum:1.0.1 -c=${{ github.event.inputs.globalConfigFile || env.globalConfigFile }} -p=/${{ github.event.inputs.resourceDirectory || env.resourceDirectory }}
           cat ${{ github.event.inputs.resourceDirectory || env.resourceDirectory }}/scenarios_execution_result.txt | awk '/successfully/{ exit 0 }/failed/{ exit 1 }'
 
       - name: Clean up workspace
