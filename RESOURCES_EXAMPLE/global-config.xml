@@ -2,6 +2,10 @@
                          xmlns="http://www.knubisoft.com/testlum/testing/model/global-config"
                          xsi:schemaLocation="http://www.knubisoft.com/testlum/testing/model/global-config global-config.xsd">
 
+    <subscription type="free">
+        <id>regression_tests_local</id>
+    </subscription>
+
     <parallelExecution>false</parallelExecution>
     <stopScenarioOnFailure>false</stopScenarioOnFailure>
     <stopIfInvalidScenario>false</stopIfInvalidScenario>
