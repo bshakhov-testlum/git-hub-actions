@@ -1,0 +1,234 @@
+<integrations xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xmlns="http://www.knubisoft.com/testlum/testing/model/global-config"
+              xsi:schemaLocation="http://www.knubisoft.com/testlum/testing/model/global-config global-config.xsd">
+
+    <apis>
+      <api alias="REST_COUNTRIES" url="https://restcountries.com/v3.1" enabled="true"/>
+    </apis>
+
+    <websockets>
+      <api alias="KRAKEN_WS" url="wss://ws.kraken.com" protocol="standard" enabled="true"/>
+    </websockets>
+
+    <graphqlIntegration>
+      <api alias="GRAPHQL_COUNTRIES" url="https://countries.trevorblades.com" enabled="true"/>
+    </graphqlIntegration>
+
+    <postgresIntegration>
+      <postgres alias="NEON_PG" enabled="true" truncate="true">
+        <jdbcDriver>org.postgresql.Driver</jdbcDriver>
+        <username>neondb_owner</username>
+        <password>npg_qPRi0hu1ZUgl</password>
+        <connectionUrl>jdbc:postgresql://ep-solitary-sky-a8zj2f86-pooler.eastus2.azure.neon.tech:5432/testlum</connectionUrl>
+        <schema>public</schema>
+        <hikari>
+          <connectionTimeout>45000</connectionTimeout>
+          <idleTimeout>60000</idleTimeout>
+          <maxLifetime>180000</maxLifetime>
+          <maximumPoolSize>50</maximumPoolSize>
+          <minimumIdle>5</minimumIdle>
+          <connectionInitSql>SELECT 1</connectionInitSql>
+          <connectionTestQuery>SELECT 1</connectionTestQuery>
+          <poolName>core-postgres-db-pool</poolName>
+          <autoCommit>true</autoCommit>
+        </hikari>
+      </postgres>
+    </postgresIntegration>
+
+<!--    <lambdaIntegration>-->
+<!--        <lambda alias="DEFAULT" enabled="false">-->
+<!--            <region>eu-central-1</region>-->
+<!--            <endpoint>http://host:port</endpoint>-->
+<!--            <accessKeyId>ACCESS_KEY</accessKeyId>-->
+<!--            <secretAccessKey>SECRET_KEY</secretAccessKey>-->
+<!--        </lambda>-->
+<!--    </lambdaIntegration>-->
+
+<!--    <dynamoIntegration>-->
+<!--        <dynamo alias="DEFAULT" enabled="false" truncate="true">-->
+<!--            <region>eu-central-1</region>-->
+<!--            <endpoint>http://host:port</endpoint>-->
+<!--            <accessKeyId>ACCESS_KEY</accessKeyId>-->
+<!--            <secretAccessKey>SECRET_KEY</secretAccessKey>-->
+<!--            <sessionToken>SESSION_TOKEN</sessionToken>-->
+<!--        </dynamo>-->
+<!--    </dynamoIntegration>-->
+
+<!--    <mongoIntegration>-->
+<!--        <mongo alias="DEFAULT" enabled="false" truncate="true">-->
+<!--            <database>DATABASE</database>-->
+<!--            <host>host</host>-->
+<!--            <port>1111</port>-->
+<!--            <username>username</username>-->
+<!--            <password>password</password>-->
+<!--        </mongo>-->
+<!--    </mongoIntegration>-->
+
+<!--    <mysqlIntegration>-->
+<!--        <mysql alias="DEFAULT" enabled="false" truncate="true">-->
+<!--            <jdbcDriver>com.mysql.cj.jdbc.Driver</jdbcDriver>-->
+<!--            <username>username</username>-->
+<!--            <password>password</password>-->
+<!--            <connectionUrl>jdbc:mysql://host:port/database</connectionUrl>-->
+<!--            <schema>SCHEMA</schema>-->
+<!--            <hikari>-->
+<!--                <connectionTimeout>45000</connectionTimeout>-->
+<!--                <idleTimeout>60000</idleTimeout>-->
+<!--                <maxLifetime>180000</maxLifetime>-->
+<!--                <maximumPoolSize>50</maximumPoolSize>-->
+<!--                <minimumIdle>5</minimumIdle>-->
+<!--                <connectionInitSql>SELECT 1</connectionInitSql>-->
+<!--                <connectionTestQuery>SELECT 1</connectionTestQuery>-->
+<!--                <poolName>core-mysql-db-pool</poolName>-->
+<!--                <autoCommit>true</autoCommit>-->
+<!--            </hikari>-->
+<!--        </mysql>-->
+<!--    </mysqlIntegration>-->
+
+<!--    <clickhouseIntegration>-->
+<!--        <clickhouse alias="DEFAULT" enabled="false" truncate="true">-->
+<!--            <jdbcDriver>ru.yandex.clickhouse.ClickHouseDriver</jdbcDriver>-->
+<!--            <username>username</username>-->
+<!--            <password>password</password>-->
+<!--            <connectionUrl>jdbc:clickhouse://host:port/database</connectionUrl>-->
+<!--        </clickhouse>-->
+<!--    </clickhouseIntegration>-->
+
+<!--    <oracleIntegration>-->
+<!--        <oracle alias="DEFAULT" enabled="false" truncate="true">-->
+<!--            <jdbcDriver>oracle.jdbc.OracleDriver</jdbcDriver>-->
+<!--            <username>username</username>-->
+<!--            <password>password</password>-->
+<!--            <connectionUrl>jdbc:oracle:thin:@host:port/database</connectionUrl>-->
+<!--            <schema>SCHEMA</schema>-->
+<!--            <hikari>-->
+<!--                <connectionTimeout>45000</connectionTimeout>-->
+<!--                <idleTimeout>60000</idleTimeout>-->
+<!--                <maxLifetime>180000</maxLifetime>-->
+<!--                <maximumPoolSize>50</maximumPoolSize>-->
+<!--                <minimumIdle>5</minimumIdle>-->
+<!--                <connectionInitSql>SELECT 1 FROM dual</connectionInitSql>-->
+<!--                <connectionTestQuery>SELECT 1 FROM dual</connectionTestQuery>-->
+<!--                <poolName>core-oracle-db-pool</poolName>-->
+<!--                <autoCommit>true</autoCommit>-->
+<!--            </hikari>-->
+<!--        </oracle>-->
+<!--    </oracleIntegration>-->
+
+<!--    <redisIntegration>-->
+<!--        <redis alias="DEFAULT" enabled="false" truncate="true">-->
+<!--            <host>host</host>-->
+<!--            <port>1111</port>-->
+<!--        </redis>-->
+<!--    </redisIntegration>-->
+
+    <sqlDatabaseIntegration>
+      <sqlDatabase alias="DEFAULT" enabled="true">
+        <jdbcDriver>org.mariadb.jdbc.Driver</jdbcDriver>
+        <username>username</username>
+        <password>password</password>
+        <connectionUrl>jdbc:mariadb://localhost:3306/database</connectionUrl>
+        <hikari>
+          <connectionTimeout>45000</connectionTimeout>
+          <idleTimeout>60000</idleTimeout>
+          <maxLifetime>180000</maxLifetime>
+          <maximumPoolSize>50</maximumPoolSize>
+          <minimumIdle>5</minimumIdle>
+          <connectionInitSql>SELECT 1</connectionInitSql>
+          <connectionTestQuery>SELECT 1</connectionTestQuery>
+          <poolName>core-mariadb-db-pool</poolName>
+          <autoCommit>true</autoCommit>
+        </hikari>
+      </sqlDatabase>
+    </sqlDatabaseIntegration>
+
+<!--    <kafkaIntegration>-->
+<!--        <kafka alias="DEFAULT" enabled="false" truncate="true">-->
+<!--            <bootstrapAddress>host:port</bootstrapAddress>-->
+<!--            <autoOffsetReset>earliest</autoOffsetReset>-->
+<!--            <maxPollRecords>2</maxPollRecords>-->
+<!--            <maxPollIntervalMs>1000</maxPollIntervalMs>-->
+<!--            <clientId>ID</clientId>-->
+<!--            <groupId>ID</groupId>-->
+<!--        </kafka>-->
+<!--    </kafkaIntegration>-->
+
+<!--    <rabbitmqIntegration>-->
+<!--        <rabbitmq alias="DEFAULT" enabled="false" truncate="true">-->
+<!--            <host>host</host>-->
+<!--            <port>11111</port>-->
+<!--            <username>username</username>-->
+<!--            <password>password</password>-->
+<!--            <apiPort>1111</apiPort>-->
+<!--            <virtualHost>/</virtualHost>-->
+<!--            <enabledMetrics>true</enabledMetrics>-->
+<!--        </rabbitmq>-->
+<!--    </rabbitmqIntegration>-->
+
+<!--    <sqsIntegration>-->
+<!--        <sqs alias="DEFAULT" enabled="false" truncate="true">-->
+<!--            <region>eu-central-1</region>-->
+<!--            <endpoint>http://host:port</endpoint>-->
+<!--            <accessKeyId>ACCESS_KEY</accessKeyId>-->
+<!--            <secretAccessKey>SECRET_KEY</secretAccessKey>-->
+<!--        </sqs>-->
+<!--    </sqsIntegration>-->
+
+<!--    <elasticsearchIntegration>-->
+<!--        <elasticsearch alias="DEFAULT" enabled="false" truncate="true">-->
+<!--            <host>host</host>-->
+<!--            <port>1111</port>-->
+<!--            <scheme>http</scheme>-->
+<!--            <connectionTimeout>30000</connectionTimeout>-->
+<!--            <socketTimeout>30000</socketTimeout>-->
+<!--            <signer>false</signer>-->
+<!--            <serviceName>DISABLED</serviceName>-->
+<!--            <region>DISABLED</region>-->
+<!--            <username>username</username>-->
+<!--            <password>password</password>-->
+<!--        </elasticsearch>-->
+<!--    </elasticsearchIntegration>-->
+
+<!--    <s3Integration>-->
+<!--        <s3 alias="DEFAULT" enabled="false" truncate="true">-->
+<!--            <region>eu-central-1</region>-->
+<!--            <endpoint>http://host:port</endpoint>-->
+<!--            <accessKeyId>ACCESS_KEY</accessKeyId>-->
+<!--            <secretAccessKey>SECRET_KEY</secretAccessKey>-->
+<!--        </s3>-->
+<!--    </s3Integration>-->
+
+<!--    <sendgridIntegration>-->
+<!--        <sendgrid alias="DEFAULT" enabled="false">-->
+<!--            <apiKey>API_KEY</apiKey>-->
+<!--        </sendgrid>-->
+<!--    </sendgridIntegration>-->
+
+<!--    <twilioIntegration>-->
+<!--        <twilio alias="DEFAULT" enabled="false">-->
+<!--            <accountSid>ACCOUNT</accountSid>-->
+<!--            <authToken>TOKEN</authToken>-->
+<!--            <twilioNumber>NUMBER</twilioNumber>-->
+<!--        </twilio>-->
+<!--    </twilioIntegration>-->
+
+<!--    <smtpIntegration>-->
+<!--        <smtp alias="DEFAULT" enabled="false">-->
+<!--            <host>host</host>-->
+<!--            <port>1111</port>-->
+<!--            <username>username@gmail.com</username>-->
+<!--            <password>password</password>-->
+<!--            <smtpAuth>true</smtpAuth>-->
+<!--            <smtpStarttlsEnable>true</smtpStarttlsEnable>-->
+<!--        </smtp>-->
+<!--    </smtpIntegration>-->
+
+<!--    <sesIntegration>-->
+<!--        <ses alias="DEFAULT" enabled="false">-->
+<!--            <region>eu-central-1</region>-->
+<!--            <endpoint>http://host:port</endpoint>-->
+<!--            <accessKeyId>ACCESS_KEY</accessKeyId>-->
+<!--            <secretAccessKey>SECRET_KEY</secretAccessKey>-->
+<!--        </ses>-->
+<!--    </sesIntegration>-->
+</integrations>
