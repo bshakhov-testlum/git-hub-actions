@@ -2,7 +2,7 @@
           xmlns="http://www.knubisoft.com/testlum/testing/model/global-config"
           xsi:schemaLocation="http://www.knubisoft.com/testlum/testing/model/global-config global-config.xsd">
 
-    <web enabled="true">
+    <web enabled="false">
         <baseUrl>https://testlum.com</baseUrl>
         <browserSettings>
             <takeScreenshots enabled="false"/>

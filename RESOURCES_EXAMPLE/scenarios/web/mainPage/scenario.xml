@@ -1,17 +1,12 @@
 <scenario xmlns="http://www.knubisoft.com/testlum/testing/model/scenario" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.knubisoft.com/testlum/testing/model/scenario scenario.xsd">
     <overview>
-        <description>Template test for page 'testlum'</description>
-        <name>testlum</name>
+        <description>Testlum for GitHub Actions</description>
+        <name>Testlum</name>
     </overview>
     
     <settings active="true" onlyThis="false">
         <tags>web</tags>
     </settings>
     
-    <web comment="Starting web script123">
-        <image comment="Compare image of e1346660-b52d-49ab-abe5-8df07488acdf element" file="image_runTestsFastAndEasyH1.png">
-            <part locator="homePage.runTestsFastAndEasyH1" percentage="95"/>
-        </image>
-        <hover comment="Perform hover with locator requestaFreeDemoButton" locator="homePage.requestaFreeDemoButton"/>
-    </web>
+    <wait comment="Wait 5 seconds" time="5"/>
 </scenario>
