@@ -15,7 +15,7 @@
     </runScenariosByTag>
 
     <report>
-        <extentReports projectName="testlum">
+        <extentReports projectName="testlum" onlyFailedScenarios="true">
             <htmlReportGenerator enabled="true"/>
             <klovServerReportGenerator enabled="false">
                 <mongoDB host="host" port="1111"/>
