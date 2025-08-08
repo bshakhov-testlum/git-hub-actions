@@ -1,0 +1,82 @@
+name: Testlum Pipeline
+
+on:
+  push:
+    branches:
+      - main
+      - master
+  workflow_dispatch:
+    inputs:
+      runEnv:
+        description: 'Environment for starting'
+        required: true
+        default: 'jenkins'
+        type: choice
+        options:
+          - jenkins
+          - dev
+          - demo
+          - integration
+          - staging
+          - production
+      resourceDirectory:
+        description: 'Enter folder NAME for testlum resources for Frontend'
+        required: true
+        default: 'RESOURCES_EXAMPLE'
+        type: string
+      globalConfigFile:
+        description: 'Enter testlum config file NAME for Frontend'
+        required: true
+        default: 'global-config.xml'
+        type: string
+
+jobs:
+  run_test:
+    runs-on: ubuntu-latest
+
+    env:
+      tag: fr  # Tag for creating docker image
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Docker
+        uses: docker/setup-buildx-action@v1
+
+      - name: List Docker containers
+        run: docker ps -a
+
+      - name: Create Docker network
+        id: docker_network
+        run: |
+          network_id=$(docker network ls --filter name=${{ env.tag }} --format '{{.Name}}')
+          if [ -z "$network_id" ]; then
+            docker network create ${{ env.tag }}
+          else
+            echo "Docker network already exists!"
+          fi
+
+      - name: Set Default Values for Inputs
+        if: github.event_name == 'push'
+        run: |
+          echo "resourceDirectory=RESOURCES_EXAMPLE" >> $GITHUB_ENV
+          echo "globalConfigFile=global-config.xml" >> $GITHUB_ENV
+
+      - name: Run Tests
+        run: |
+          docker run -u ${{ env.USER_ID }}:${{ env.GROUP_ID }} --network ${{ env.tag }} -e TZ=Europe/Kiev --name ui-tests-fr -v ${{ github.workspace }}/schema:/schema -v ${{ github.workspace }}/${{ github.event.inputs.resourceDirectory || env.resourceDirectory }}:/${{ github.event.inputs.resourceDirectory || env.resourceDirectory }} public.ecr.aws/f1r2a3f3/testlum:1.0.1 -c=${{ github.event.inputs.globalConfigFile || env.globalConfigFile }} -p=/${{ github.event.inputs.resourceDirectory || env.resourceDirectory }}
+          cat ${{ github.event.inputs.resourceDirectory || env.resourceDirectory }}/scenarios_execution_result.txt | awk '/successfully/{ exit 0 }/failed/{ exit 1 }'
+
+      - name: Clean up workspace
+        run: rm -rf ${{ github.event.inputs.resourceDirectory || env.resourceDirectory }}
+
+      - name: Remove Docker containers (Post job)
+        if: always()
+        run: |
+          docker ps -aq | xargs -r docker stop
+          docker ps -aq | xargs -r docker rm
+
+      - name: Prune Docker system (Post job)
+        if: always()
+        run: docker system prune -fa

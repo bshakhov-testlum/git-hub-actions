@@ -1,0 +1,22 @@
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xmlns="http://www.knubisoft.com/testlum/testing/model/pages"
+      xsi:schemaLocation="http://www.knubisoft.com/testlum/testing/model/pages pages.xsd">
+
+    <details>
+      <name>Business page</name>
+      <url>https://testlum.com/business</url>
+      <description>Business page of Testlum's website</description>
+    </details>
+
+    <include component="header.xml"/>
+
+    <locators>
+      <locator locatorId="inscription">
+        <xpath>//*[@id="app"]/div/div/div[8]/div/div/div[5]/p</xpath>
+        <cssSelector>p.testlum-header-title.testlum-header-title-text</cssSelector>
+        <className>testlum-header-title testlum-header-title-text</className>
+        <text>Start improving your product today!</text>
+      </locator>
+    </locators>
+
+</page>

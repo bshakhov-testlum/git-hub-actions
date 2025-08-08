@@ -1,0 +1,12 @@
+<scenario xmlns="http://www.knubisoft.com/testlum/testing/model/scenario" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.knubisoft.com/testlum/testing/model/scenario scenario.xsd">
+    <overview>
+        <description>GitHub Actions</description>
+        <name>In Action</name>
+    </overview>
+    
+    <settings>
+        <tags>web</tags>
+    </settings>
+    
+    <wait comment="Wait for 5 seconds" time="5"/>
+</scenario>

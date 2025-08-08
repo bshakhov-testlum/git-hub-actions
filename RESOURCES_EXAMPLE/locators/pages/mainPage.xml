@@ -1,0 +1,51 @@
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xmlns="http://www.knubisoft.com/testlum/testing/model/pages"
+      xsi:schemaLocation="http://www.knubisoft.com/testlum/testing/model/pages pages.xsd">
+
+    <details>
+      <name>Main Page</name>
+      <url>https://testlum.com/</url>
+      <description>Main page of Testlum website</description>
+    </details>
+
+    <include component="header.xml"/>
+
+    <locators>
+        <locator locatorId="playButton">
+          <xpath>//*[@id="play-button"]/div</xpath>
+          <id>play-button</id>
+        </locator>
+        <locator locatorId="iframe">
+          <xpath>//*[@id="app"]/div/div/div[1]/div[4]/iframe</xpath>
+          <cssSelector>iframe.video-content[src*="youtube.com/embed/OAevX8rS9gk"]</cssSelector>
+          <className>video-content</className>
+        </locator>
+        <locator locatorId="video">
+          <xpath>//*[@id="movie_player"]</xpath>
+          <cssSelector>div#movie_player.html5-video-player</cssSelector>
+          <id>movie_player</id>
+          <className>html5-video-player</className>
+        </locator>
+        <locator locatorId="pauseButton">
+          <xpath>//*[@id="movie_player"]/div[30]/div[2]/div[1]/button</xpath>
+          <cssSelector>[data-title-no-tooltip="Pause"]</cssSelector>
+          <className>ytp-play-button</className>
+        </locator>
+        <locator locatorId="benefits">
+          <xpath>//*[@id="app"]/div/div/div[4]/div/div[2]/div[2]/div/h2</xpath>
+          <cssSelector>h2.cards-headers-title</cssSelector>
+          <className>cards-headers-title</className>
+        </locator>
+        <locator locatorId="capabilities">
+          <xpath>//*[@id="app"]/div/div/div[5]</xpath>
+          <cssSelector>div.test-capabilities</cssSelector>
+          <className>test-capabilities</className>
+        </locator>
+        <locator locatorId="integrations">
+          <xpath>//*[@id="app"]/div/div/div[6]</xpath>
+          <cssSelector>div.unlimited-integrations-container</cssSelector>
+          <className>unlimited-integrations-container</className>
+        </locator>
+    </locators>
+
+</page>

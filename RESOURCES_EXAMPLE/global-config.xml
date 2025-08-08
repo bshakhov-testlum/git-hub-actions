@@ -1,0 +1,31 @@
+<globalTestConfiguration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                         xmlns="http://www.knubisoft.com/testlum/testing/model/global-config"
+                         xsi:schemaLocation="http://www.knubisoft.com/testlum/testing/model/global-config global-config.xsd">
+
+    <subscription type="free">
+        <id>free</id>
+    </subscription>
+    <parallelExecution>false</parallelExecution>
+    <stopScenarioOnFailure>false</stopScenarioOnFailure>
+    <stopIfInvalidScenario>false</stopIfInvalidScenario>
+    <delayBetweenScenarioRuns seconds="1" enabled="true"/>
+
+    <runScenariosByTag enabled="true">
+        <tag name="web" enabled="true"/>
+    </runScenariosByTag>
+
+    <report>
+        <extentReports projectName="testlum">
+            <htmlReportGenerator enabled="true"/>
+            <klovServerReportGenerator enabled="false">
+                <mongoDB host="host" port="1111"/>
+                <klovServer url="http://host:port"/>
+            </klovServerReportGenerator>
+        </extentReports>
+    </report>
+
+    <environments>
+        <env folder="env_0" enabled="true"/>
+    </environments>
+
+</globalTestConfiguration>

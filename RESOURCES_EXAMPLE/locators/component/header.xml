@@ -1,0 +1,28 @@
+<component xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xmlns="http://www.knubisoft.com/testlum/testing/model/pages"
+           xsi:schemaLocation="http://www.knubisoft.com/testlum/testing/model/pages component.xsd">
+
+    <locators>
+        <locator locatorId="aboutUs">
+            <xpath>//*[@id="footer"]/div[1]/div[4]/ul/li[2]/a</xpath>
+            <cssSelector>a[href='/aboutUs']</cssSelector>
+            <text>About us</text>
+        </locator>
+        <locator locatorId="webTesting">
+            <xpath>//*[@id="footer"]/div[1]/div[1]/ul/li[1]/a</xpath>
+            <cssSelector>.router-link-exact-active</cssSelector>
+            <text>Web testing</text>
+        </locator>
+        <locator locatorId="mobileTesting">
+            <xpath>//*[@id="footer"]/div[1]/div[1]/ul/li[3]/a</xpath>
+            <cssSelector>.router-link-exact-active</cssSelector>
+            <text>Mobile testing</text>
+        </locator>
+        <locator locatorId="business">
+            <xpath>//*[@id="app"]/div/header/nav/a[1]</xpath>
+            <cssSelector>.router-link-active:nth-child(2)</cssSelector>
+            <text>For businesses</text>
+      </locator>
+    </locators>
+
+</component>
