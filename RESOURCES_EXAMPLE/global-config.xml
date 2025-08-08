@@ -16,8 +16,8 @@
 
     <report>
         <extentReports projectName="testlum">
-            <htmlReportGenerator enabled="false"/>
-            <klovServerReportGenerator enabled="true">
+            <htmlReportGenerator enabled="true"/>
+            <klovServerReportGenerator enabled="false">
                 <mongoDB host="192.168.0.10" port="27017"/>
                 <klovServer url="https://reports.knubisoft.com"/>
             </klovServerReportGenerator>
